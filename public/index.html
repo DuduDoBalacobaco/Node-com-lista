@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de compras com backend</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="container">
+        <div id="opcao">
+            <span id="con" onclick="alteraLayoutConsulta()">Consultar</span>
+            <span id="cad" onclick="alteraLayoutCadastro()">Cadastrar</span>
+            <span id="alt" onclick="alteraLayoutAlterar()">Alterar</span>
+            <span id="del" onclick="alteraLayoutDeletar()">Deletar</span>
+        </div>
+
+        <section id="layoutAberto">
+            <section id="consultar">
+                <div class="texto"><p id="textoConsulta">Digite o que você gostaria de </p><span id="green">consultar</span></div>
+                    <div id="inputConsulta">
+                        <div class="input">
+                            <input type="number" placeholder="Digite pelo id" id="consultaId">
+                            <input type="text" placeholder="Digite pelo produto" id="consultaProduto">
+                        </div>
+                        <button type="button" onclick="consultaLista()">Consulte</button>
+                    </div>
+            </section>
+
+            <section id="cadastrar">
+                <div class="texto"><p id="textoCadastrar">Digite abaixo o que quer </p><span id="yellow">cadastrar</span></div>
+                    <div id="inputCadastrar">
+                        <div class="input">
+                            <input type="text" placeholder="Digite o produto" id="cadastroProduto">
+                        </div>
+                        <button type="button" onclick="verificarItemExistente()">Cadastrar</button>
+                    </div>
+            </section>
+
+            <section id="alterar">
+                    <div id="idAlterar">
+                        <div class="texto"><p id="textoAlterar">Digite o id do produto que quer </p><span id='blue'>alterar</span></div>
+                        <div class="inputAltDel">
+                            <input type="number" placeholder="Digite o id" id="alterarId">
+                        </div>
+                            <button type="button" onclick="mudarLayoutInputAlterar()">Confirmar</button>
+                    </div>
+
+                    <div id="inputAlterar">
+                        <div class="texto"><p>Digite abaixo o que quer </p><span id='blue'>alterar</span></div>
+                        <div class="inputAltDel">
+                            <input type="text" placeholder="Alterar produto" id="alterarProd">
+                        </div>
+                            <button type="button" onclick="capturarIdAlterar()">Alterar</button>
+                    </div>
+            </section>
+
+            <section id="deletar">
+                    <div id="idDeletar">
+                        <div class="texto"><p id="textoDeletar">Digite o id do produto que quer </p><span id='red'>deletar</span></div>
+                        <div class="inputAltDel">
+                            <input type="number" placeholder="Digite o id" id="deletarId">
+                        </div>
+                            <button type="button" onclick="mudarLayoutInputDeletar()">Deletar</button>
+                    </div>
+                <div id="confirmar">
+                    <p>Você realmente quer <span id='vermelho'>deletar</span>?</p>
+                    <div id="btns">
+                        <button type="button" onclick="capturarIdDeletar()" id="danger">Confirmar</button>
+                        <button type="button" onclick="alteraLayoutDeletar()">Retornar</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <div id="teste">
+            <section id="mostrar">
+                <h2>Lista de compras</h2>
+                    <ul id="lista"></ul>
+            </section>
+
+            <section id="o">
+                <span>O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+                <span class="p">O</span><span class="p">O</span>
+            </section>
+
+            <section id="mostrar2">
+                <h2>Lista de compras</h2>
+                    <ul id="lista2"></ul>
+            </section>
+        </div>    
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
