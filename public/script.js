@@ -19,17 +19,36 @@ async function carregaLista() {
     lista = listas;
 
     let listagem =  document.getElementById('lista')
+    let listagem2 =  document.getElementById('lista2')
     listagem.textContent = ""
+    listagem2.textContent = ""
+    let contador = 1;
+
+    document.getElementById('mostrarPagina2').style.animation = "fecharPagina 2.5s ease-in-out forwards"
 
     listas.forEach(u => {
-        let li = document.createElement('li')
-        let hr = document.createElement('hr')
-        li.id = u.id
-
-        li.textContent = `${u.id} - ${formatarTexto(u.produto)}`;
-        listagem.appendChild(li)
-        listagem.appendChild(hr)
+        if(contador <= 10){
+            criarLista(u, listagem)
+            contador += 1;
+        }
+        else{
+            if(contador === 11){
+                document.getElementById('mostrarPagina2').style.animation = "abrirPagina 2s ease-in-out forwards"
+            }
+            criarLista(u, listagem2)
+            contador += 1; 
+        }
     })
+}
+
+function criarLista(u, lista){
+    let li = document.createElement('li')
+    let hr = document.createElement('hr')
+    li.id = u.id
+
+    li.textContent = `${u.id} - ${formatarTexto(u.produto)}`;
+    lista.appendChild(li)
+    lista.appendChild(hr)
 }
 
 function consultaLista(){

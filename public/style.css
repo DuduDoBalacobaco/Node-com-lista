@@ -177,20 +177,28 @@ input:focus::placeholder{
 #vermelho{
     color: red;
 }
-#mostrar{
+#mostrarPagina{
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 20px;
-    z-index: 0;
+    z-index: 1;
+    left: -300px;
+    top: 10px;
 }
-#mostrar2{
+#mostrarPagina2{
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 20px;
     margin-left: -11px;
     z-index: 0;
+    top: 10px;
+    backface-visibility: hidden;
+    transform-origin: left center;
+    animation: abrirPagina 2.5s ease-in-out forwards;
 }
 h2{
     width: 300px;
@@ -206,7 +214,7 @@ ul{
     list-style: none;
     height: 400px;
     background-color: #e2e2e2;
-    padding: 20px;
+    padding: 5px 20px;
     border: 2px solid black;
     border-top: none;
 }
@@ -216,6 +224,7 @@ li{
 }
 #teste{
     display: flex;
+    position: relative;
 }
 #o{
     margin-top: 20px;
@@ -223,8 +232,28 @@ li{
     font-size: 30px;
     display: flex;
     flex-direction: column;
-    z-index: 1;
+    z-index: 2;
 }
-.p{
+.o{
     margin-top: -25px;
+}
+
+@keyframes abrirPagina{
+    from{
+        transform: translateX(-300px) rotateY(180deg);
+    }
+
+    to{
+        transform: translateX(12px) rotateY(0deg);
+    }
+}
+
+@keyframes fecharPagina{
+    from{
+        transform: translateX(12px) rotateY(0deg);
+    }
+
+    to{
+        transform: translateX(-300px) rotateY(180deg);
+    }
 }
