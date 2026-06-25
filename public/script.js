@@ -26,6 +26,7 @@ async function carregaLista() {
 
     document.getElementById('parteDeFurosPagina2').style.animation = "fecharFuro 1.5s ease-in-out forwards"
     document.getElementById('mostrarPagina2').style.animation = "fecharPagina 1.5s ease-in-out forwards"
+    document.getElementById('capa2').style.animation = "fecharCapa 1.45s ease-in-out forwards"
 
     listas.forEach(u => {
         if(contador <= 10){
@@ -36,6 +37,7 @@ async function carregaLista() {
             if(contador === 11){
                 document.getElementById('parteDeFurosPagina2').style.animation = "abrirFuro 2s ease-in-out forwards"
                 document.getElementById('mostrarPagina2').style.animation = "abrirPagina 2s ease-in-out forwards"
+                document.getElementById('capa2').style.animation = "abrirCapa 2s ease-in-out forwards"
             }
             criarLista(u, listagem2)
             contador += 1; 

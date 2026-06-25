@@ -19,6 +19,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 900px;
+    perspective: 1500px;
 }
 #opcao{
     display: flex;
@@ -243,7 +244,8 @@ li{
 #caderno{
     display: flex;
     position: relative;
-    perspective: 1500px;
+    perspective: 2500px;
+    z-index: 2;
 }
 .argola{
     display: flex;
@@ -280,7 +282,6 @@ li{
 }
 #parteDeFurosPagina2{
     position: absolute;
-
     backface-visibility: hidden;
     transform-origin: left center;
     animation: abrirFuro 2s ease-in-out forwards;
@@ -351,6 +352,7 @@ li{
     flex-direction: column;
     transform: rotateX(106deg);
     margin-top: -20px;
+    z-index: 100;
 }
 
 @keyframes abrirPagina{
@@ -358,10 +360,10 @@ li{
         transform: translateX(-300px) rotateY(180deg);
     }
     50%{
-        transform: translateX(45px) rotateY(90deg);
+        transform: translateX(51px) rotateY(90deg);
     }
     100%{
-        transform: translateX(66px) rotateY(0deg);
+        transform: translateX(67px) rotateY(0deg);
     }
 }
 
@@ -370,7 +372,7 @@ li{
         transform: translateX(66px) rotateY(0deg);
     }
     50%{
-        transform: translateX(45px) rotateY(90deg);
+        transform: translateX(51px) rotateY(90deg);
     }
     100%{
         transform: translateX(-300px) rotateY(180deg);
@@ -382,10 +384,10 @@ li{
         transform: translateX(-200px) rotateY(180deg);
     }
     50%{
-        transform: translateX(31px) rotateY(90deg);
+        transform: translateX(37px) rotateY(90deg);
     }
     100%{
-        transform: translateX(49px) rotateY(0deg);
+        transform: translateX(50px) rotateY(0deg);
     }
 }
 
@@ -394,9 +396,58 @@ li{
         transform: translateX(49px) rotateY(0deg);
     }
     50%{
-        transform: translateX(31px) rotateY(90deg);
+        transform: translateX(37px) rotateY(90deg);
     }
     100%{
         transform: translateX(-200px) rotateY(180deg);
     }
+}
+@keyframes abrirCapa{
+    0%{
+        transform: translateX(-2px) rotateY(180deg);
+    }
+    50%{
+        transform: translateX(0px) rotateY(90deg);
+    }
+    100%{
+        transform: translateX(0px) rotateY(0deg);
+    }
+}
+
+@keyframes fecharCapa{
+    0%{
+        transform: translateX(0px) rotateY(0deg);
+    }
+    50%{
+        transform: translateX(0px) rotateY(90deg);
+    }
+    100%{
+        transform: translateX(-2px) rotateY(180deg);
+    }
+}
+#capa{
+    z-index: 0;
+    height: 490px;
+    width: 334px;
+    border: 1px solid black;
+    position: relative;
+    margin-bottom: -515px;
+    right: 161px;
+    margin-top: 10px;
+    background: linear-gradient(120deg, green, blue);
+    box-shadow: 0 0 16px rgb(0, 0, 0, 0.8);
+}
+#capa2{
+    z-index: 0;
+    height: 490px;
+    position: relative;
+    width: 334px;
+    background: linear-gradient(120deg, blue, yellow);
+    border: 1px solid black;
+    margin-top: -493px;
+    left: 175px;
+    box-shadow: 0 0 16px rgb(0, 0, 0, 0.8);
+    backface-visibility: hidden;
+    transform-origin: left center;
+    animation: abrirCapa 2.5s ease-in-out forwards;
 }
