@@ -193,12 +193,12 @@ input:focus::placeholder{
     flex-direction: column;
     justify-content: center;
     margin-top: 20px;
-    margin-left: -11px;
+    margin-left: -15px;
     z-index: 0;
     top: 10px;
     backface-visibility: hidden;
     transform-origin: left center;
-    animation: abrirPagina 2.5s ease-in-out forwards;
+    animation: abrirPagina 2s ease-in-out forwards;
 }
 h2{
     width: 300px;
@@ -209,6 +209,13 @@ h2{
     align-items: center;
     border: 2px solid black;
     border-bottom: none;
+    border-right: 2px dashed black;
+    position: relative;
+    left: 6px;
+}
+#listaContra{
+    border-left: 2px dashed black;
+    border-right: 2px solid black;
 }
 ul{
     list-style: none;
@@ -217,43 +224,175 @@ ul{
     padding: 5px 20px;
     border: 2px solid black;
     border-top: none;
+    border-right: 2px dashed black;
+    position: relative;
+    left: 6px;
+}
+#lista2{
+    border-left: 2px dashed black;
+    border-right: 2px solid black;
 }
 li{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-top: 10px;
 }
-#teste{
+#caderno{
     display: flex;
     position: relative;
+    perspective: 1500px;
 }
-#o{
-    margin-top: 20px;
-    margin-left: -11px;
-    font-size: 30px;
+.argola{
+    display: flex;
+    flex-direction: column;
+}
+#separaArgolaUnica, .separaArgolaDoH2, #separaArgolaDaUl, .separaArgola{
     display: flex;
     flex-direction: column;
     z-index: 2;
+    font-size: 45px;
+    margin-left: -11px;
+}
+#separaArgolaUnica{
+    margin-top: 37px;
+}
+.separaArgolaDoH2{
+    margin-top: -13px;
+}
+#separaArgolaDaUl{
+    margin-top: -4px;
+}
+.separaArgola{
+    margin-top: -13px;
 }
 .o{
-    margin-top: -25px;
+    margin-top: -22px;
+}
+.o2{
+    margin-top: -32px;
+}
+#parteDeFuros, #parteDeFurosPagina2{
+    display: flex;
+    flex-direction: column;
+}
+#parteDeFurosPagina2{
+    position: absolute;
+
+    backface-visibility: hidden;
+    transform-origin: left center;
+    animation: abrirFuro 2s ease-in-out forwards;
+}
+.furo, .furo3{
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px 0; 
+    width: 25px;
+    height: 80px;
+    background-color: rgb(177, 177, 177);
+    border: 2px solid black;
+    border-left: none;
+    border-bottom: none;
+}
+.furo{
+    left: 5.5px;
+}
+.furo3{
+    position: relative;
+    right: 17.5px;
+    border-right: none;
+    border-left: 2px solid black;
+}
+.furo2, .furo4{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 25px;
+    height: 400px;
+    background-color: #f0f0f0;
+    border: 2px solid black;
+    border-left: none;
+    border-top: none;
+}
+.furo2{
+    left: 6px;
+}
+.furo4{
+    position: relative;
+    right: 17px;
+    border-right: none;
+    border-left: 2px solid black;
+}
+.buraco{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid black;
+    background: linear-gradient(100deg, rgb(187, 187, 187), rgb(77, 77, 77));
+    border-radius: 50%;
+}
+
+.espiralDupla{
+    display: flex;
+    flex-direction: column;
+    transform: rotateX(106deg);
+    margin-top: -20px;
 }
 
 @keyframes abrirPagina{
-    from{
+    0%{
         transform: translateX(-300px) rotateY(180deg);
     }
-
-    to{
-        transform: translateX(12px) rotateY(0deg);
+    50%{
+        transform: translateX(45px) rotateY(90deg);
+    }
+    100%{
+        transform: translateX(66px) rotateY(0deg);
     }
 }
 
 @keyframes fecharPagina{
     from{
-        transform: translateX(12px) rotateY(0deg);
+        transform: translateX(66px) rotateY(0deg);
     }
-
+    50%{
+        transform: translateX(45px) rotateY(90deg);
+    }
     to{
         transform: translateX(-300px) rotateY(180deg);
+    }
+}
+
+@keyframes abrirFuro{
+    from{
+        transform: translateX(-200px) rotateY(180deg);
+    }
+    50%{
+        transform: translateX(31px) rotateY(90deg);
+    }
+    to{
+        transform: translateX(49px) rotateY(0deg);
+    }
+}
+
+@keyframes fecharFuro{
+    0%{
+        transform: translateX(49px) rotateY(0deg);
+    }
+    50%{
+        transform: translateX(31px) rotateY(90deg);
+    }
+    100%{
+        transform: translateX(-200px) rotateY(180deg);
     }
 }

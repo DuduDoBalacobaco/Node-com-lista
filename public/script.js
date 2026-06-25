@@ -24,7 +24,8 @@ async function carregaLista() {
     listagem2.textContent = ""
     let contador = 1;
 
-    document.getElementById('mostrarPagina2').style.animation = "fecharPagina 2.5s ease-in-out forwards"
+    document.getElementById('parteDeFurosPagina2').style.animation = "fecharFuro 1.5s ease-in-out forwards"
+    document.getElementById('mostrarPagina2').style.animation = "fecharPagina 1.5s ease-in-out forwards"
 
     listas.forEach(u => {
         if(contador <= 10){
@@ -33,6 +34,7 @@ async function carregaLista() {
         }
         else{
             if(contador === 11){
+                document.getElementById('parteDeFurosPagina2').style.animation = "abrirFuro 2s ease-in-out forwards"
                 document.getElementById('mostrarPagina2').style.animation = "abrirPagina 2s ease-in-out forwards"
             }
             criarLista(u, listagem2)
@@ -53,7 +55,7 @@ function criarLista(u, lista){
 
 function consultaLista(){
     let existe = false;
-    let texto =document.getElementById('textoConsulta')
+    let texto = document.getElementById('textoConsulta')
 
     lista.forEach(u => {
 
