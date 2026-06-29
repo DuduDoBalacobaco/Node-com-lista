@@ -10,10 +10,16 @@ let tamLista = listas.length;
 app.use(express.json());
 
 app.get("/listas", (req, res) => {
-  res.json(listas);
+  res.status(201).json(listas);
 });
 
 app.post("/listas", (req, res) => {
+    if(!req.body.produto) {
+        return res.status(400).json({
+            erro: "O produto é obrigatório"
+        });
+    }
+
     tamLista += 1;
 
     const item = {
@@ -23,7 +29,7 @@ app.post("/listas", (req, res) => {
 
     listas.push(item)
 
-    res.json(item)
+    res.status(200).json(item)
 });
 
 app.put("/listas/:id", (req, res) => {
@@ -31,19 +37,30 @@ app.put("/listas/:id", (req, res) => {
         u => u.id === Number(req.params.id)
     );
     
-    item.produto = req.body.produto ?? item.produto
+    if(!item){
+        return res.status(404).json({
+            erro: "Item não encontrado"
+        })
+    }
+    item.produto = req.body.produto === "" || req.body.produto === null ? item.produto : req.body.produto;
 
-    res.json(item)
+    res.status(200).json(item)
 })
 
 app.delete("/listas/:id", (req, res) => {
-    let tamanho = listas.length
-
-    listas = listas.filter(
-        u => u.id !== Number(req.params.id)
+    const index = listas.findIndex(
+        u => u.id === Number(req.params.id)
     );
 
-    tamanho === listas.length ? res.send("Item não encontrado") : res.send("Item removido")
+    if (index === -1) {
+        return res.status(404).json({
+            erro: "Item não encontrado"
+        });
+    }
+
+    listas.splice(index, 1);
+
+    res.status(200).send("Produto removido")
 })
 
 app.use(express.static("public"));

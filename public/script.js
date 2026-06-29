@@ -9,6 +9,7 @@ let alterarId = document.getElementById('alterarId')
 let deletarId = document.getElementById('deletarId')
 
 let textCad = document.getElementById('textoCadastrar')
+let textoAlt = document.getElementById('textoAlterar')
 
 let lista = []
 
@@ -92,7 +93,7 @@ function consultaLista(){
 }
 
 async function cadastrarProduto(item) {
-    await fetch("/listas", {
+    const resposta = await fetch("/listas", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -100,6 +101,11 @@ async function cadastrarProduto(item) {
         body: JSON.stringify({produto: item})
     });
 
+    if(!resposta.ok){
+        const erro = await resposta.json();
+        alert(erro.erro);
+        return;
+    }
     carregaLista()
 }
 
@@ -140,14 +146,19 @@ function verificarItemExistente(){
 }
 
 async function alterarProduto(id ,prod){
-    await fetch(`/listas/${id}`, {
+    const resposta = await fetch(`/listas/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({produto: prod})
     });
-    
+    if(!resposta.ok){
+        const erro = await resposta.json();
+        alert(erro.erro);
+        return;
+    }
+
     limparInput(alterarId)
     limparInput(alterarProd)
 
@@ -158,18 +169,44 @@ async function alterarProduto(id ,prod){
 function capturarIdAlterar(){
     let id = Number(alterarId.value)
     let prod = formatarTexto(alterarProd.value)
+    let textoInputAlt = document.getElementById("textoInputAlt")
+    let alterar = true;
 
-    alterarProduto(id, prod)
+    if(prod === ""){
+        textoInputAlt.textContent = "Palavra não indentificada"
+        textoInputAlt.style.color = "red"
+        document.getElementById('blueAgain').style.display = "none"
+        alterar = false
+
+        setTimeout(() => {
+            textoInputAlt.textContent = "Digite abaixo o que quer "
+            textoInputAlt.style.color = "black"
+            document.getElementById('blueAgain').style.display = "flex"
+        }, 3000)
+    }
+
+    if(alterar){
+        alterarProduto(id, prod)
+    }
+    else{
+        limparInput(alterarProd)
+    }
 }
 
 async function excluirItem(id) {
-   await fetch(`/listas/${id}`, {
-       method: "DELETE"
-   });
+    const resposta = await fetch(`/listas/${id}`, {
+        method: "DELETE"
+    });
 
-   limparInput(deletarId)
-   alteraLayoutDeletar()
-   carregaLista()
+    if(!resposta.ok){
+        const erro = await resposta.json();
+        alert(erro.erro);
+        return;
+    }
+
+    limparInput(deletarId)
+    alteraLayoutDeletar()
+    carregaLista()
 }
 
 function capturarIdDeletar(){
@@ -339,7 +376,6 @@ function alteraLayoutDeletar(){
 
 function mudarLayoutInputAlterar(){
     let id = Number(alterarId.value)
-    let texto = document.getElementById('textoAlterar')
     let existeId = false
 
     lista.forEach(u => {
@@ -350,14 +386,14 @@ function mudarLayoutInputAlterar(){
 
 
     if(id === "" || !existeId){
-        texto.textContent = "Digite um ID válido"
-        texto.style.color = "red"
+        textoAlt.textContent = "Digite um ID válido"
+        textoAlt.style.color = "red"
         document.getElementById('blue').style.display = "none"
         limparInput(alterarId)
 
         setTimeout(() => {
-            texto.textContent = "Digite o id do produto que quer "
-            texto.style.color = "black"
+            textoAlt.textContent = "Digite o id do produto que quer "
+            textoAlt.style.color = "black"
             document.getElementById('blue').style.display = "flex"
         }, 3000)
     }

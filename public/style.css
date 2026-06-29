@@ -57,6 +57,7 @@ body{
     border-top: none;
     box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.3);
     border-radius: 0 0 12px 12px;
+    margin-bottom: 25px;
 }
 #cadastrar, #consultar, #alterar, #deletar, #confirmar{
     display: flex;
@@ -167,7 +168,7 @@ input:focus::placeholder{
     color: rgb(0, 255, 0);
     margin: 0 5px;
 }
-#blue{
+#blue, #blueAgain{
     color: rgb(3, 3, 199);
     margin: 0 5px;
 }
@@ -404,7 +405,7 @@ li{
 }
 @keyframes abrirCapa{
     0%{
-        transform: translateX(-2px) rotateY(180deg);
+        transform: translateX(-52px) rotateY(180deg);
     }
     50%{
         transform: translateX(0px) rotateY(90deg);
@@ -422,7 +423,7 @@ li{
         transform: translateX(0px) rotateY(90deg);
     }
     100%{
-        transform: translateX(-2px) rotateY(180deg);
+        transform: translateX(-52px) rotateY(180deg);
     }
 }
 #capa{
@@ -434,7 +435,7 @@ li{
     margin-bottom: -515px;
     right: 161px;
     margin-top: 10px;
-    background: linear-gradient(120deg, green, blue);
+    background: linear-gradient(120deg, rgb(1, 255, 1), blue, yellow);
     box-shadow: 0 0 16px rgb(0, 0, 0, 0.8);
 }
 #capa2{
@@ -442,7 +443,7 @@ li{
     height: 490px;
     position: relative;
     width: 334px;
-    background: linear-gradient(120deg, blue, yellow);
+    background: linear-gradient(120deg, blue, yellow, rgb(1, 255, 1));
     border: 1px solid black;
     margin-top: -493px;
     left: 175px;
